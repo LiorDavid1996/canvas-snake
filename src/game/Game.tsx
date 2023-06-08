@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
 import Canvas from '../canvas/Canvas';
 import draw from '../draw/draw';
-import { GameWrapper, Score } from './Game.styles';
+import { GameWrapper, ControlWrapper } from './Game.styles';
 import useGameLogic from './useGameLogic';
-
+import TryAgain from "./TryAgain";
+import { Console } from 'console';
+import Control from './Control';
 interface GameProps {}
 
 export enum GameState {
@@ -31,32 +33,14 @@ const Game: React.FC<GameProps> = ({}) => {
   };
 
   return (
+   <>
+     {gameState=== GameState.GAME_OVER&&<TryAgain gameState={gameState} setGameState={setGameState} resetGameState={resetGameState}  />}
+     <Control score={(snakeBody.length - 1) * 10} gameState={gameState} setGameState={setGameState} resetGameState={resetGameState}/>
     <GameWrapper tabIndex={0} onKeyDown={onKeyDownHandler}>
+    
       <Canvas ref={canvasRef} draw={drawGame} />
-      {gameState === GameState.GAME_OVER ? (
-        <button
-          onClick={() => {
-            setGameState(GameState.RUNNING);
-            resetGameState();
-          }}
-        >
-          Play Again
-        </button>
-      ) : (
-        <button
-          onClick={() => {
-            setGameState(
-              gameState === GameState.RUNNING
-                ? GameState.PAUSED
-                : GameState.RUNNING
-            );
-          }}
-        >
-          {gameState === GameState.RUNNING ? 'pause' : 'play'}
-        </button>
-      )}
-      <Score>{`Your score: ${(snakeBody.length - 1) * 10} `}</Score>
     </GameWrapper>
+    </>
   );
 };
 

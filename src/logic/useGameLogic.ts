@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { SEGMENT_SIZE } from '../draw/draw';
 import randomPositionOnGrid from '../utils/randomPositionOnGrid';
 import useInterval from '../utils/useInterval';
-import { GameState } from './Game';
+import { GameState } from '../components/game/Game';
 import createSnakeMovement, {
   hasSnakeEatenItself,
   willSnakeHitTheFood,
@@ -44,6 +44,8 @@ const useGameLogic = ({
   ]);
 
   const resetGameState = () => {
+    
+    
     setDirection(undefined);
     setFoodPosition({
       x: randomPositionOnGrid({

@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
-import Canvas from '../canvas/Canvas';
-import draw from '../draw/draw';
+import Canvas from '../../canvas/Canvas';
+import draw from '../../draw/draw';
 import { GameWrapper, ControlWrapper } from './Game.styles';
-import useGameLogic from './useGameLogic';
-import TryAgain from "./TryAgain";
+import useGameLogic from '../../logic/useGameLogic';
+import TryAgain from "../trayAgain/TryAgain";
 import { Console } from 'console';
-import Control from './Control';
+import Control from '../control/Control';
 interface GameProps {}
 
 export enum GameState {
@@ -35,7 +35,7 @@ const Game: React.FC<GameProps> = ({}) => {
   return (
    <>
      {gameState=== GameState.GAME_OVER&&<TryAgain gameState={gameState} setGameState={setGameState} resetGameState={resetGameState}  />}
-     <Control score={(snakeBody.length - 1) * 10} gameState={gameState} setGameState={setGameState} resetGameState={resetGameState}/>
+     <Control score={(snakeBody.length - 1) * 10} gameState={gameState} setGameState={setGameState} />
     <GameWrapper tabIndex={0} onKeyDown={onKeyDownHandler}>
     
       <Canvas ref={canvasRef} draw={drawGame} />

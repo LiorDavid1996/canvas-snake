@@ -1,5 +1,5 @@
-import { Blur ,TryAgainButton ,TryAgainWrapper} from "./Game.styles"
-import { GameState } from "./Game";
+import { Blur ,TryAgainButton ,TryAgainWrapper} from "../game/Game.styles"
+import { GameState } from "../game/Game";
 import { useEffect } from "react";
 interface TryAgainProps {
     gameState:GameState
@@ -12,8 +12,9 @@ const TryAgain:React.FC<TryAgainProps>=({gameState ,setGameState,resetGameState}
     {console.log(gameState)
     }
    
-    useEffect(()=>{
+ useEffect(()=>{
  resetGameState()
+console.log("lll");
 
     },[])
 return (

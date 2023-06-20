@@ -1,4 +1,4 @@
-import { Position } from '../game/useGameLogic';
+import { Position } from '../logic/useGameLogic';
 
 interface DrawArgs {
   ctx: CanvasRenderingContext2D;

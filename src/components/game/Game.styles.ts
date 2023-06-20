@@ -52,13 +52,6 @@ export const TryAgainButton = styled.button`
     background-image: linear-gradient(-180deg, #1d95c9 0%, #17759c 100%);
   }
 `;
-export const ControlContainer =styled.div`
- width: 100%auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
- 
-`
 export const ControlWrapper =styled.div`
 
 width: 50%;
@@ -66,42 +59,6 @@ width: 50%;
 
  
 `
-export  const PauseControl = styled.button`
-  position: relative;
-  width: 50px; 
-  height: 30px; 
-  background-color: #eaeaea; 
-  
-`
-export const GreenSquare = styled.div`
-  width: 30px;
-  height: 30px;
-  margin-left: auto;
-  background-color: green;
-`;
-export const ScoreNumber = styled.span`
-   width: 50px;
-  height: 30px;
-  font-size: 25px;
-  color: white;
- 
-`;
-
-export const TrophyImage = styled.img`
- width: 50px;
-  height: 30px;
-  
-  `
-
-export const IconPlayStop = styled.img`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; 
-  object-fit: cover; 
-  z-index: 1;
-`;
 
 export const Table = styled.table`
   width: 40%;
@@ -123,12 +80,12 @@ export const Td = styled.td`
 `;
 
 export const ExitButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px;
-  background-color: #f44336;
-  color: #ffffff;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 30px;
+  background-color: transparent;
+  color: #888;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -138,3 +95,14 @@ export const ExitIcon = styled.img`
   height: 10px;
   width: 10px;
 `;
+
+export const UserTableErro =styled.div`
+display: flex;
+justify-content: center ;
+align-items: center;
+height: 40%;
+width: 40%;
+color: #ffffff;
+background-color: #333333;
+
+`

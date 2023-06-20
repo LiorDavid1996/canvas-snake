@@ -20,7 +20,7 @@ export const SingUpBody=styled.div`
 
 `
 
-export const Card = styled.div`
+export const Card = styled.form`
 position: relative;
   width: 300px;
   padding: 20px;
@@ -78,10 +78,16 @@ export const ExitButton = styled.button`
 `;
 
 export const SingUpSpan = styled.span`
-color :red;
+color :green;
 border-bottom: red;
 font-size: 12px;
 font-family: Verdana, Geneva, Tahoma, sans-serif;
 padding: 10px;
 
+`
+export const ErrorText =styled.div`
+color: #b94a48;
+`
+export const SuccessText =styled.div`
+color: green;
 `

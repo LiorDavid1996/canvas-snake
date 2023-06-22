@@ -6,6 +6,7 @@ import useGameLogic from '../../logic/useGameLogic';
 import TryAgain from "../trayAgain/TryAgain";
 import { Console } from 'console';
 import Control from '../control/Control';
+import "../../App.css"
 interface GameProps {}
 
 export enum GameState {

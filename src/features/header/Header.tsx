@@ -3,12 +3,14 @@ import { AuthContext } from "../../context/auth-context";
 import styled from "styled-components"
 import RegisterForm from "../../login/Register";
 import LoginForm from "../../login/LogIn";
+import {useNavigate} from "react-router-dom"
 
 
 
 const Header = ()=>{
     const [isVisible, setIsVisible] = useState(0);
     const { user, setUser ,bestScore, setBestScore} = useContext(AuthContext);
+    const navigate = useNavigate()
     const Button = styled.button`
     position: relative;
     top: 16px;
@@ -24,6 +26,7 @@ const Header = ()=>{
       localStorage.removeItem("bestScore");
       setBestScore(0)
       setUser(null)
+      navigate("/")
     };
   
     const renderAuthenticationButton = () => {

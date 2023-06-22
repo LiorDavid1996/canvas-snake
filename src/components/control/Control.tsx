@@ -12,6 +12,7 @@ import {
 import UserTable from "../pages/userTable/UsersTable";
 import { AuthContext } from "../../context/auth-context";
 import { GameState } from "../game/Game";
+import { Link } from "react-router-dom"
 
 interface ScoreProps {
   score: number;
@@ -61,25 +62,29 @@ const Control: React.FC<ScoreProps> = ({ score, gameState, setGameState }) => {
   };
 
   const handleTableControlClick = () => {
-    setShowTable(true);
+    console.log("Link");
+    
+   <Link to="/UserTable" relative="path"/>
   };
-  {console.log(user,"user");
-  }
+
 
   return (
     <ControlContainer>
-      {showTable && (
-        <UserTable users={user?.users} userId={user?.id} setShowTable={setShowTable} />
-      )}
+    
       <ControlWrapper>
         <PauseControl onClick={handlePauseControlClick}>
           <IconPlayStop
             src={gameState === GameState.RUNNING ? "Pause-icon.png" : "Play-icon.png"}
           />
         </PauseControl>
-        <PauseControl onClick={handleTableControlClick}>
-          <IconPlayStop src="podium-icon-13.jpg" />
+   <Link to="/UserTable" relative="path">
+   <PauseControl onClick={handleTableControlClick}>
+
+     <IconPlayStop src="podium-icon-13.jpg" />
         </PauseControl>
+   </Link>
+
+         
         <GreenSquare />
         <ScoreNumber>{score}</ScoreNumber>
         <TrophyImage src="5987898.png" />

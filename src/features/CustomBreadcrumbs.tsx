@@ -1,29 +1,51 @@
 import React from 'react';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from "react-router-dom";
 
-const CustomBreadcrumbs = () => {
-  const breadcrumbsStyle = {
-    color: 'white', // Apply custom color to the breadcrumbs
+interface CustomBreadcrumbsProps {
+  navi: number;
+}
+
+const CustomBreadcrumbs: React.FC<CustomBreadcrumbsProps> = ({ navi }) => {
+  const navigate = useNavigate();
+
+  const handleLinkClick = (event: React.MouseEvent<HTMLSpanElement>, str: string) => {
+    event.preventDefault();
+    navigate(str);
+  };
+
+  const breadcrumbsStyle: React.CSSProperties = {
+    color: 'white',
+    backgroundColor: 'black'
+  };
+
+  const linkStyle: React.CSSProperties = {
+    textDecoration: 'underline',
+    color: 'inherit',
+    cursor: 'pointer',
   };
 
   return (
     <Breadcrumbs aria-label="breadcrumb" sx={breadcrumbsStyle}>
-      <Link underline="hover" color="inherit" href="/">
-        MUI
-      </Link>
-      <Link
-        underline="hover"
-        color="inherit"
-        href="/material-ui/getting-started/installation/"
+      <Typography
+        component="span"
+        sx={linkStyle}
+        onClick={(e: React.MouseEvent<HTMLSpanElement>) => { handleLinkClick(e, "/") }}
       >
-        Core
-      </Link>
-      <Typography color="text.primary">/</Typography>
-      <Typography color="text.primary">Breadcrumbs</Typography>
+        Game
+      </Typography>
+      {navi === 2 && <Typography
+        component="span"
+        sx={linkStyle}
+        onClick={(e: React.MouseEvent<HTMLSpanElement>) => { handleLinkClick(e, "/UserTable") }}
+      >
+        Table
+      </Typography>}
     </Breadcrumbs>
   );
 };
 
 export default CustomBreadcrumbs;
+
+

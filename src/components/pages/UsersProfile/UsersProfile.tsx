@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -8,22 +8,13 @@ import Grid from '@mui/material/Grid';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 import CustomBreadcrumbs from '../../../features/CustomBreadcrumbs';
+import { AuthContext } from '../../../context/auth-context';
 
 const UsersProfile: React.FC = () => {
-  const users=[
-    {name:"lior",lastName:"david",position : 12,bestScore : 12},
-    {name:"lior",lastName:"david",position : 12,bestScore : 12},
-    {name:"lior",lastName:"david",position : 12,bestScore : 12},
-    {name:"lior",lastName:"david",position : 12,bestScore : 12},
-    {name:"lior",lastName:"david",position : 12,bestScore : 12},
-    {name:"lior",lastName:"david",position : 12,bestScore : 12},
-    {name:"lior",lastName:"david",position : 12,bestScore : 12},
-    {name:"lior",lastName:"david",position : 12,bestScore : 12},
-    {name:"lior",lastName:"david",position : 12,bestScore : 12},
-    {name:"lior",lastName:"david",position : 12,bestScore : 12},
-    {name:"lior",lastName:"david",position : 12,bestScore : 12},
-    {name:"lior",lastName:"david",position : 12,bestScore : 12}
-  ]
+  const {user}=useContext(AuthContext)
+  console.log(user,"lllll");
+  
+
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     console.info('You clicked a breadcrumb.');
@@ -31,21 +22,21 @@ const UsersProfile: React.FC = () => {
  
   return (
     <Container sx={{ marginTop: '1rem' }} fixed>
-       <CustomBreadcrumbs/>
+       <CustomBreadcrumbs navi={2}/>
       <Grid container spacing={2} alignItems="center" justifyContent="center">
-        {users.map((user, index) => (
+        {user?.users?.map((user:any, index) => (
           <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
             <Card sx={{ maxWidth: 245 }}>
               <CardMedia sx={{ height: 120 }} image="profile_user.jpg" title="green iguana" />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {user.name} {user.lastName}
+                  {user.firstName} {user.lastName}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  position: {user.position}
+                  position: {index}
                 </Typography>
                 <Typography marginTop="10px" variant="body2" color="text.secondary">
-                  best score: {user.bestScore}
+                  best score: {user.score}
                 </Typography>
               </CardContent>
             </Card>

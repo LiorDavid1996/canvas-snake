@@ -17,7 +17,9 @@ const CustomBreadcrumbs: React.FC<CustomBreadcrumbsProps> = ({ navi }) => {
 
   const breadcrumbsStyle: React.CSSProperties = {
     color: 'white',
-    backgroundColor: 'black'
+    backgroundColor: 'black',
+    width: "500px",
+
   };
 
   const linkStyle: React.CSSProperties = {

@@ -34,10 +34,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const CenteredContainer = styled('div')({
   display: "flex",
+  flexDirection:"column",
   justifyContent: "center",
+  alignItems: "center",
   width: "100vw",
   height: "50vh",
-  backgroundColor: "green",
 });
 const StickyTableHead = styled(TableHead)({
   position: 'sticky',
@@ -56,7 +57,7 @@ const UserTable: React.FC = () => {
   };
 
   return (
-    <>
+    <CenteredContainer>
  
       <CustomBreadcrumbs navi={1}/>
       <TableContainer sx={{ height: 300, width: 500 }} component={Paper}>
@@ -69,19 +70,19 @@ const UserTable: React.FC = () => {
             </TableRow>
           </StickyTableHead>
           <TableBody>
-            {user?.users?.map((user: any, index: number) => (
-              <StyledTableRow key={user._id} onClick={handleTableRowClick}>
+            {user?.users?.map((userRow: any, index: number) => (
+              <StyledTableRow key={userRow._id} onClick={handleTableRowClick} className='non'>
                 <StyledTableCell component="th" scope="user">
-                  {user.firstName}
+                  {userRow.firstName}
                 </StyledTableCell>
-                <StyledTableCell align="right">{user.score}</StyledTableCell>
+                <StyledTableCell align="right">{userRow.score}</StyledTableCell>
                 <StyledTableCell align="right">{index + 1}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-      </>
+      </CenteredContainer>
    
   );
 }

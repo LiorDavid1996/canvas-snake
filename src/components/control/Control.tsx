@@ -13,6 +13,8 @@ import UserTable from "../pages/userTable/UsersTable";
 import { AuthContext } from "../../context/auth-context";
 import { GameState } from "../game/Game";
 import { Link } from "react-router-dom"
+import PopupCard from "../../features/PopupCard";
+import {  useNavigate } from "react-router-dom";
 
 interface ScoreProps {
   score: number;
@@ -21,7 +23,9 @@ interface ScoreProps {
 }
 
 const Control: React.FC<ScoreProps> = ({ score, gameState, setGameState }) => {
-  const [showTable, setShowTable] = useState(false);
+ const [sam,setSam]=useState(1)
+ const navigate = useNavigate();
+
   const { user, bestScore, setBestScore } = useContext(AuthContext);
 
   useEffect(() => {
@@ -62,9 +66,9 @@ const Control: React.FC<ScoreProps> = ({ score, gameState, setGameState }) => {
   };
 
   const handleTableControlClick = () => {
-    console.log("Link");
-    
-   <Link to="/UserTable" relative="path"/>
+    navigate("/UserTable");
+
+     
   };
 
 
@@ -78,7 +82,7 @@ const Control: React.FC<ScoreProps> = ({ score, gameState, setGameState }) => {
           />
         </PauseControl>
    <Link to="/UserTable" relative="path">
-   <PauseControl onClick={handleTableControlClick}>
+   <PauseControl type="button" onClick={handleTableControlClick}>
 
      <IconPlayStop src="podium-icon-13.jpg" />
         </PauseControl>
@@ -90,6 +94,7 @@ const Control: React.FC<ScoreProps> = ({ score, gameState, setGameState }) => {
         <TrophyImage src="5987898.png" />
         <ScoreNumber>{bestScore}</ScoreNumber>
       </ControlWrapper>
+      {/* {<PopupCard />} */}
     </ControlContainer>
   );
 };

@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Game from "./components/game/Game";
 import Header from "./features/header/Header";
 import UserTable from "./components/pages/userTable/UsersTable";
-import UsersProfile from "./components/pages/UsersProfile/UsersProfile";
+
 
 
 const App = () => {

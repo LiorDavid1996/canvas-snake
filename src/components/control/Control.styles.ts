@@ -1,25 +1,20 @@
 import styled from 'styled-components';
-
-
 export const ControlContainer =styled.div`
- width: 100%auto;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
- 
 `
 export const ControlWrapper =styled.div`
-
-width: 50%;
+ width:782px;
  display: flex;
-
  
 `
-export  const PauseControl = styled.button`
+export  const ImgWrapper = styled.button`
   position: relative;
   width: 50px; 
   height: 30px; 
-  background-color: #eaeaea; 
+ 
   
 `
 export const GreenSquare = styled.div`
@@ -29,10 +24,8 @@ export const GreenSquare = styled.div`
   background-color: green;
 `;
 export const ScoreNumber = styled.span`
-
   font-size: 25px;
   color: white;
- 
 `;
 
 export const TrophyImage = styled.img`
@@ -41,7 +34,7 @@ export const TrophyImage = styled.img`
   
   `
 
-export const IconPlayStop = styled.img`
+export const Icon = styled.img`
   position: absolute;
   top: 0;
   left: 0;

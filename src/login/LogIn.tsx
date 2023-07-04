@@ -2,15 +2,16 @@ import { Blur } from "../components/game/Game.styles";
 import styled from "styled-components";
 import axios from "axios";
 import {
-  Card,
   CardTitle,
   Button,
-  Input,
   CardHeder,
   ExitButton,
   SingUpSpan,
   ErrorText,
   SuccessText,
+  StyledInput,
+  StyledForm,
+  ErrorMsg
 } from "./Login.styles";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -23,26 +24,7 @@ interface singUpProps {
 }
 
 
-const StyledInput = styled(Field)`
-width: 100%;
-padding: 8px;
-margin-bottom: 10px;
-border: 1px solid #ccc;
-border-radius: 4px;
-`;
-const StyledForm = styled(Form)`
-position: relative;
-width: 300px;
-padding: 20px;
-border: 1px solid #ccc;
-border-radius: 4px;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-`;
-const ErrorMsg = styled(ErrorMessage)`
-color: red;
-font-size: 14px;
-margin-bottom: 5px;
-`;
+
 const LoginForm: React.FC<singUpProps> = ({ setIsVisible }) => {
 
   const [error, setError] = useState("");
@@ -69,8 +51,8 @@ const LoginForm: React.FC<singUpProps> = ({ setIsVisible }) => {
         values
       );
       localStorage.removeItem("bestScore")
+      
       setBestScore(data.score)
-      console.log(data.score);
       setUser(data)
       setIsVisible(0)
       setLoading(false);

@@ -5,23 +5,23 @@ import RegisterForm from "../../login/Register";
 import LoginForm from "../../login/LogIn";
 import {useNavigate} from "react-router-dom"
 
-
+const Button = styled.button`
+position: relative;
+top: 16px;
+left: 16px;
+padding: 8px 16px;
+background-color: #f44336;
+color: #ffffff;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+`;
 
 const Header = ()=>{
     const [isVisible, setIsVisible] = useState(0);
-    const { user, setUser ,bestScore, setBestScore} = useContext(AuthContext);
+    const { user, setUser , setBestScore} = useContext(AuthContext);
     const navigate = useNavigate()
-    const Button = styled.button`
-    position: relative;
-    top: 16px;
-    left: 16px;
-    padding: 8px 16px;
-    background-color: #f44336;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  `;
+  
     const logout = () => {
       localStorage.removeItem("bestScore");
       setBestScore(0)

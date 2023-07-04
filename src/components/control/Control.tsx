@@ -5,37 +5,36 @@ import {
   GreenSquare,
   TrophyImage,
   ScoreNumber,
-  PauseControl,
+  ImgWrapper,
   ControlContainer,
-  IconPlayStop,
+  Icon,
 } from "./Control.styles";
-import UserTable from "../pages/userTable/UsersTable";
 import { AuthContext } from "../../context/auth-context";
 import { GameState } from "../game/Game";
-import { Link } from "react-router-dom"
 import PopupCard from "../../features/PopupCard";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-interface ScoreProps {
+interface ControlProps {
   score: number;
   gameState: GameState;
   setGameState: (state: GameState) => void;
 }
 
-const Control: React.FC<ScoreProps> = ({ score, gameState, setGameState }) => {
- const [sam,setSam]=useState(1)
- const navigate = useNavigate();
+const Control: React.FC<ControlProps> = ({
+  score,
+  gameState,
+  setGameState,
+}) => {
+  const [sam, setSam] = useState(false);
+  const navigate = useNavigate();
 
   const { user, bestScore, setBestScore } = useContext(AuthContext);
 
   useEffect(() => {
- 
-        const storedBestScore = localStorage.getItem("bestScore");
-    if (storedBestScore ) {
+    const storedBestScore = localStorage.getItem("bestScore");
+    if (storedBestScore) {
       setBestScore(parseInt(storedBestScore));
-    
     }
-  
   }, []);
   useEffect(() => {
     const updateScore = async () => {
@@ -52,7 +51,7 @@ const Control: React.FC<ScoreProps> = ({ score, gameState, setGameState }) => {
     };
 
     if (gameState === GameState.GAME_OVER && user && score > bestScore) {
-        updateScore();
+      updateScore();
     } else {
       if (score > bestScore && gameState === GameState.GAME_OVER) {
         setBestScore(score);
@@ -61,45 +60,47 @@ const Control: React.FC<ScoreProps> = ({ score, gameState, setGameState }) => {
     }
   }, [gameState, score, user, bestScore, setBestScore]);
 
-  const handlePauseControlClick = () => {
-    setGameState(gameState === GameState.RUNNING ? GameState.PAUSED : GameState.RUNNING);
+  const handleImgWrapperClick = () => {
+    setGameState(
+      gameState === GameState.RUNNING ? GameState.PAUSED : GameState.RUNNING
+    );
   };
 
   const handleTableControlClick = () => {
-    navigate("/UserTable");
+    if (user) {
+      navigate("/UserTable");
+    } else {
+      console.log(sam);
 
-     
+      setSam(true);
+    }
   };
-
 
   return (
     <ControlContainer>
-    
       <ControlWrapper>
-        <PauseControl onClick={handlePauseControlClick}>
-          <IconPlayStop
-            src={gameState === GameState.RUNNING ? "Pause-icon.png" : "Play-icon.png"}
+        <ImgWrapper onClick={handleImgWrapperClick}>
+          <Icon
+            src={
+              gameState === GameState.RUNNING
+                ? "Pause-icon.png"
+                : "Play-icon.png"
+            }
           />
-        </PauseControl>
-   <Link to="/UserTable" relative="path">
-   <PauseControl type="button" onClick={handleTableControlClick}>
+        </ImgWrapper>
 
-     <IconPlayStop src="podium-icon-13.jpg" />
-        </PauseControl>
-   </Link>
+        <ImgWrapper type="button" onClick={handleTableControlClick}>
+          <Icon src="podium-icon-13.jpg" />
+        </ImgWrapper>
 
-         
         <GreenSquare />
         <ScoreNumber>{score}</ScoreNumber>
         <TrophyImage src="5987898.png" />
         <ScoreNumber>{bestScore}</ScoreNumber>
       </ControlWrapper>
-      {/* {<PopupCard />} */}
+      {sam && <PopupCard showPopUp={setSam} />}
     </ControlContainer>
   );
 };
 
 export default Control;
-
-
-

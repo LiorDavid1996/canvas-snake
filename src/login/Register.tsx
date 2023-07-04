@@ -1,18 +1,18 @@
 import { Blur } from "../components/game/Game.styles";
-import styled from "styled-components";
 import axios from "axios";
 import {
-  Card,
   CardTitle,
   Button,
-  Input,
   CardHeder,
   ExitButton,
   SingUpSpan,
   ErrorText,
   SuccessText,
+  StyledForm,
+  StyledInput,
+  ErrorMsg
 } from "./Login.styles";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 import { useState,useContext } from "react";
 import DotLoader from "react-spinners/DotLoader";
@@ -23,8 +23,6 @@ interface singUpProps {
   setIsVisible?: any;
 }
 const RegisterForm: React.FC<singUpProps> = ({ setIsVisible }) => {
-
-  
   const validationSchema = Yup.object({
     firstName: Yup.string()
       .required("What's your First name ?")
@@ -48,31 +46,10 @@ const RegisterForm: React.FC<singUpProps> = ({ setIsVisible }) => {
       .min(6, "Password must be atleast 6 characters.")
       .max(36, "Password can't be more than 36 characters"),
   });
-  const [image, setImage] = useState<File | undefined>(undefined);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
-  const {user,setUser}=useContext(AuthContext)
-  const StyledInput = styled(Field)`
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  `;
-  const StyledForm = styled(Form)`
-    position: relative;
-    width: 300px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  `;
-  const ErrorMsg = styled(ErrorMessage)`
-    color: red;
-    font-size: 14px;
-    margin-bottom: 5px;
-  `;
+  const {setUser}=useContext(AuthContext)
   const handleSubmit = async (values: any) => {
     console.log(values);
     setLoading(true);

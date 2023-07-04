@@ -8,17 +8,16 @@ import { AuthContext } from "./context/auth-context";
 import NotLoggedInRoutes from "./Routs/NotLoggedIn";
 
 const App = () => {
-  const { user, setUser, bestScore, setBestScore } = useContext(AuthContext);
 
   return (
     <>
       <Header />
       <Routes>
         <Route path="/" element={<Game />} />
-        <Route element={<NotLoggedInRoutes />}>
+    
         <Route path="/UserTable" element={<UserTable/>} />
         <Route path="/profileCards" element={<UsersProfile />} />
-        </Route>
+        
         
       </Routes>
     </>

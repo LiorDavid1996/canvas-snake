@@ -33,7 +33,7 @@ const UsersProfile: React.FC = () => {
                   {user.firstName} {user.lastName}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  position: {index}
+                  position: {index+1}
                 </Typography>
                 <Typography marginTop="10px" variant="body2" color="text.secondary">
                   best score: {user.score}

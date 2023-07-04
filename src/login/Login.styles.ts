@@ -1,57 +1,22 @@
 import styled from "styled-components";
+import { Field, Form, ErrorMessage } from "formik";
 
-export const SingUpWrapper = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: azure;
-
-`
-export const SingUpCard=styled.div`
-width: 40%;
-height: 40%;
-background-color: azure;
-box-shadow: 1px 8px 15px -7px red
-`
-export const SingUpHeder=styled.div`
-
-`
-export const SingUpBody=styled.div`
-
-`
-
-export const Card = styled.form`
-position: relative;
-  width: 300px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+export const CardHeder = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(
+    90deg,
+    rgb(0, 131, 187) 0%,
+    rgba(18, 18, 18, 1) 80%
+  );
+  margin-bottom: 10px;
 `;
-export const CardHeder=styled.div`
-display: flex;
-justify-content: center;
-height: 100%;
-width: 100%;
-background-image:linear-gradient( 90deg, rgb(0, 131, 187) 0%,rgba(18, 18, 18, 1) 80%);
-margin-bottom: 10px;
-
-
-`
 export const CardTitle = styled.h1`
   font-size: 24px;
   margin-bottom: 16px;
-  color:white;
-  
-  
-`;
-
-export const Input = styled.input`
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  color: white;
 `;
 
 export const Button = styled.button`
@@ -78,16 +43,38 @@ export const ExitButton = styled.button`
 `;
 
 export const SingUpSpan = styled.span`
-color :green;
-border-bottom: red;
-font-size: 12px;
-font-family: Verdana, Geneva, Tahoma, sans-serif;
-padding: 10px;
+  color: green;
+  border-bottom: red;
+  font-size: 12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 10px;
+`;
+export const ErrorText = styled.div`
+  color: #b94a48;
+`;
+export const SuccessText = styled.div`
+  color: green;
+`;
 
-`
-export const ErrorText =styled.div`
-color: #b94a48;
-`
-export const SuccessText =styled.div`
-color: green;
-`
+export const StyledInput = styled(Field)`
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+export const StyledForm = styled(Form)`
+  position: relative;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+export const ErrorMsg = styled(ErrorMessage)`
+  color: red;
+  font-size: 14px;
+  margin-bottom: 5px;
+`;

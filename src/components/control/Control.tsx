@@ -25,7 +25,7 @@ const Control: React.FC<ControlProps> = ({
   gameState,
   setGameState,
 }) => {
-  const [sam, setSam] = useState(false);
+  const [popUpVisible, popUpVisibleSetSam] = useState(false);
   const navigate = useNavigate();
 
   const { user, bestScore, setBestScore } = useContext(AuthContext);
@@ -70,9 +70,7 @@ const Control: React.FC<ControlProps> = ({
     if (user) {
       navigate("/UserTable");
     } else {
-      console.log(sam);
-
-      setSam(true);
+      popUpVisibleSetSam(true);
     }
   };
 
@@ -98,7 +96,7 @@ const Control: React.FC<ControlProps> = ({
         <TrophyImage src="5987898.png" />
         <ScoreNumber>{bestScore}</ScoreNumber>
       </ControlWrapper>
-      {sam && <PopupCard showPopUp={setSam} />}
+      {popUpVisible && <PopupCard showPopUp={popUpVisibleSetSam} />}
     </ControlContainer>
   );
 };

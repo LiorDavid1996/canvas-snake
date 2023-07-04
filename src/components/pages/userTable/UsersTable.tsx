@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 const StickyTableHead = styled(TableHead)(({ theme }) => ({
   position: "sticky",
   top: 0,
-  backgroundColor: theme.palette.mode === "light" ? "#f5f5f5" : "#383838",
+
   zIndex: 10,
 }));
 
@@ -38,8 +38,6 @@ const StyledTableRow = styled(TableRow)<{ isCurrentUser?: boolean }>`
   `}
 `;
 
-
-
 const UserTable: React.FC = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -47,28 +45,30 @@ const UserTable: React.FC = () => {
 
   useEffect(() => {
     if (tableRef.current && user) {
-      const registeredUserRow = Array.from(tableRef.current.querySelectorAll("tr")).find(
-        (row) => {
-          const userId = row.getAttribute("data-user-id");
-          return userId === user.id;
-        }
-      );
+      const registeredUserRow = Array.from(
+        tableRef.current.querySelectorAll("tr")
+      ).find((row) => {
+        const userId = row.getAttribute("data-user-id");
+        return userId === user.id;
+      });
 
       if (registeredUserRow) {
-        registeredUserRow.scrollIntoView({ behavior: "smooth", block: "center" });
+        registeredUserRow.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
       }
     }
   }, [user]);
-
-  const handleTableRowClick = () => {
-    navigate("/profileCards");
-  };
 
   return (
     <Container>
       <CustomBreadcrumbs navi={1} />
       <TableContainer sx={{ height: 300, width: 500 }} component={Paper}>
-        <Table sx={{ height: "max-content", position: "sticky" }} aria-label="customized table">
+        <Table
+          sx={{ height: "max-content", position: "sticky" }}
+          aria-label="customized table"
+        >
           <StickyTableHead>
             <TableRow>
               <StyledTableCell>name</StyledTableCell>
@@ -80,7 +80,6 @@ const UserTable: React.FC = () => {
             {user?.users?.map((userRow: any, index: number) => (
               <StyledTableRow
                 key={userRow._id}
-                onClick={handleTableRowClick}
                 data-user-id={userRow._id}
                 isCurrentUser={userRow._id === user.id}
               >
@@ -99,7 +98,3 @@ const UserTable: React.FC = () => {
 };
 
 export default UserTable;
-
-
-
-

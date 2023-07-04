@@ -31,7 +31,6 @@ const Game: React.FC = () => {
   const drawGame = (ctx: CanvasRenderingContext2D) => {
     draw({ ctx, snakeBody, foodPosition });
   };
-
   return (
    <>
      {gameState=== GameState.GAME_OVER&&<TryAgain setGameState={setGameState} resetGameState={resetGameState}  />}

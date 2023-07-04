@@ -6,7 +6,7 @@ import { useContext } from "react";
 const  NotLoggedInRoutes=() =>{
   const { user } = useContext(AuthContext)
 
-  return !user ? <Navigate to="/" /> : <Outlet />;
+  return !user ? <Navigate to="/"/> : <Outlet />;
 }
 export default NotLoggedInRoutes
 

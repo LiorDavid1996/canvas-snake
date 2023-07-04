@@ -18,7 +18,6 @@ const TryAgain: React.FC<TryAgainProps> = ({
   return (
     <Blur>
       <TryAgainWrapper>
-        <img src="sucker-mr-snake.gif" />
         <TryAgainButton onClick={() => setGameState(GameState.RUNNING)}>
           {" "}
           TRY AGAIN

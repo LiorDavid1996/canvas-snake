@@ -15,7 +15,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Game />} />
         <Route path="/UserTable" element={<UserTable/>} />
-        <Route path="/profileCards" element={<UsersProfile />} />
+        
         
         
       </Routes>

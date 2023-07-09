@@ -25,15 +25,15 @@ const Control: React.FC<ControlProps> = ({
   gameState,
   setGameState,
 }) => {
-  const [popUpVisible, popUpVisibleSetSam] = useState(false);
+  const [popUpVisible, setPopUpVisible] = useState(false);
   const navigate = useNavigate();
 
   const { user, bestScore, setBestScore } = useContext(AuthContext);
 
   useEffect(() => {
-    const storedBestScore = localStorage.getItem("bestScore");
-    if (storedBestScore) {
-      setBestScore(parseInt(storedBestScore));
+    const storeBestScore = localStorage.getItem("bestScore");
+    if (storeBestScore) {
+      setBestScore(parseInt(storeBestScore));
     }
   }, []);
   useEffect(() => {
@@ -70,7 +70,7 @@ const Control: React.FC<ControlProps> = ({
     if (user) {
       navigate("/UserTable");
     } else {
-      popUpVisibleSetSam(true);
+      setPopUpVisible(true);
     }
   };
 
@@ -96,7 +96,7 @@ const Control: React.FC<ControlProps> = ({
         <TrophyImage src="5987898.png" />
         <ScoreNumber>{bestScore}</ScoreNumber>
       </ControlWrapper>
-      {popUpVisible && <PopupCard showPopUp={popUpVisibleSetSam} />}
+      {popUpVisible && <PopupCard showPopUp={setPopUpVisible} />}
     </ControlContainer>
   );
 };
